@@ -73,13 +73,18 @@ export function AppShell({ children }: { children: ReactNode }) {
             {stxAddress && (
               <Link href="/settings" className="well flex items-center gap-3 px-3.5 py-3 text-ink no-underline">
                 <WalletBadge name={walletName} size={34} />
-                <span className="flex min-w-0 flex-1 flex-col gap-1">
-                  <span style={{ font: "600 14px/1 var(--body)" }}>{walletName ?? "Wallet"}</span>
-                  <span className="mono txs whitespace-nowrap">{short}</span>
-                </span>
-                <span className="flex items-center gap-1.5 text-success" style={{ font: "600 12px/1 var(--body)" }}>
-                  <span className="dot bg-success" />
-                  Connected
+                {/* Status sits on the name line: beside the address it overlapped at sidebar width. */}
+                <span className="flex min-w-0 flex-1 flex-col gap-1.5">
+                  <span className="flex items-center justify-between gap-2">
+                    <span className="truncate" style={{ font: "600 14px/1 var(--body)" }}>
+                      {walletName ?? "Wallet"}
+                    </span>
+                    <span className="flex flex-none items-center gap-1.5 text-success" style={{ font: "600 12px/1 var(--body)" }}>
+                      <span className="dot bg-success" />
+                      Connected
+                    </span>
+                  </span>
+                  <span className="mono txs truncate">{short}</span>
                 </span>
               </Link>
             )}
