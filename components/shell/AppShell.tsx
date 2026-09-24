@@ -8,7 +8,9 @@ import { Wordmark } from "../Wordmark";
 import { TestnetBanner } from "../TestnetBanner";
 import { ThemeToggle } from "../ThemeToggle";
 import { useWallet } from "../providers/wallet";
+import { usePrefs } from "../providers/prefs";
 import { shortAddress } from "@/lib/format";
+import { REPO_URL } from "@/lib/links";
 
 const sideNav: { href: string; label: string; icon: IconName }[] = [
   { href: "/home", label: "Home", icon: "home" },
@@ -31,6 +33,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const isTabPage = tabRoutes.includes(pathname);
   const { stxAddress, walletName } = useWallet();
+  const { bannerHidden } = usePrefs();
   const short = stxAddress ? shortAddress(stxAddress) : "";
 
   return (
@@ -40,13 +43,20 @@ export function AppShell({ children }: { children: ReactNode }) {
         {/* Desktop sidebar */}
         <nav
           aria-label="Main"
-          className="sticky top-0 hidden h-dvh w-64 flex-none flex-col gap-8 border-r border-line bg-surface-2 px-5 pt-7 pb-6 lg:flex"
+          // Fit under the 36px testnet banner so the bottom of the sidebar is never cut off.
+          style={{ height: bannerHidden ? "100dvh" : "calc(100dvh - 36px)" }}
+          className="sticky top-0 hidden w-64 flex-none flex-col gap-8 overflow-y-auto border-r border-line bg-surface-2 px-5 pt-7 pb-6 lg:flex"
         >
           <div className="flex items-center justify-between">
             <Link href="/home" aria-label="Rack home" className="flex px-2.5 py-1 no-underline">
               <Wordmark size="lg" />
             </Link>
-            <ThemeToggle />
+            <span className="flex items-center">
+              <a className="iconbtn text-ink-2" href={REPO_URL} target="_blank" rel="noreferrer" aria-label="Source code on GitHub" title="Source code on GitHub">
+                <Icon name="code" />
+              </a>
+              <ThemeToggle />
+            </span>
           </div>
           <div className="flex flex-col gap-1">
             {sideNav.map((n) => {
