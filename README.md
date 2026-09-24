@@ -6,6 +6,8 @@ Rack is a non-custodial bitcoin savings account built on [Stacks](https://stacks
 
 This repository is the **testnet MVP** built for a Stacks Endowment *Getting Started* grant application (Q3 2026). The full product spec is in [`docs/PRD.md`](docs/PRD.md).
 
+**Live demo: https://rack-six.vercel.app** (Stacks testnet)
+
 > **Testnet preview.** No real funds, no real bill payments. The bill-payment partner is mocked.
 
 <p>
@@ -227,7 +229,8 @@ All chain values come from environment variables (see [`.env.example`](.env.exam
 
 Near-term tasks:
 
-- [ ] Deploy to Vercel and record the 2-minute demo
+- [x] Deploy to Vercel: https://rack-six.vercel.app
+- [ ] Record the 2-minute demo
 - [ ] First real testnet sBTC airtime payment, visible in the explorer
 - [ ] Test Xverse and Leather end to end on desktop and mobile
 - [ ] Persistent order store (Postgres)
