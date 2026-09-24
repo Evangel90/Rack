@@ -173,6 +173,7 @@ const paths = {
   ),
   filter: <path d="M4 5h16l-6 7v6l-4 2v-8z" />,
   arrowOut: <path d="M7 17 17 7M9 7h8v8" />,
+  code: <path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16" />,
   moon: <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" />,
   sun: (
     <>

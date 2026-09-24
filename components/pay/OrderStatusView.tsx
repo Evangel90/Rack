@@ -11,6 +11,7 @@ import { getJson } from "@/lib/hooks";
 import { explorerTxUrl, formatInt, formatNgn, formatWhen } from "@/lib/format";
 import { formatLocalPhone, networkInfo } from "@/lib/phone";
 import type { Order } from "@/lib/types";
+import { NEW_ISSUE_URL } from "@/lib/links";
 
 const TERMINAL = ["fulfilled", "failed", "refund_needed"];
 
@@ -145,10 +146,15 @@ export function OrderStatusView({ orderId }: { orderId: string }) {
               <Icon name="refresh" />
               Try again
             </Link>
-            <Link className="btn btn-g btn-block" href="/settings#help">
+            <a
+              className="btn btn-g btn-block"
+              href={`${NEW_ISSUE_URL}?title=${encodeURIComponent(`Order ${o.id} ${o.status}`)}&body=${encodeURIComponent(`Transaction: ${explorer}\nWhat happened: ${o.failureReason ?? ""}`)}`}
+              target="_blank"
+              rel="noreferrer"
+            >
               <Icon name="chat" />
-              Get help
-            </Link>
+              Report this on GitHub
+            </a>
           </>
         }
       >

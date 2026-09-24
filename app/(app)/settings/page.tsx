@@ -10,6 +10,7 @@ import { WalletBadge } from "@/components/shell/AppShell";
 import { MobileBackHeader } from "@/components/shell/MobileBackHeader";
 import { Chip } from "@/components/StatusChip";
 import { shortAddress } from "@/lib/format";
+import { ISSUES_URL, REPO_URL } from "@/lib/links";
 
 const themes: { id: ThemePref; label: string }[] = [
   { id: "light", label: "Light" },
@@ -27,7 +28,8 @@ const help: { icon: IconName; label: string; href: string }[] = [
   { icon: "book", label: "Help centre", href: "https://docs.stacks.co/concepts/sbtc" },
   { icon: "wallet", label: "What’s a wallet?", href: "https://leather.io/learn" },
   { icon: "trend", label: "How yield works", href: "/earn" },
-  { icon: "warning", label: "Report a problem", href: "https://github.com/Evangel90/Rack/issues" },
+  { icon: "warning", label: "Report a problem", href: ISSUES_URL },
+  { icon: "code", label: "Source code on GitHub", href: REPO_URL },
 ];
 
 export default function SettingsPage() {
@@ -183,7 +185,12 @@ export default function SettingsPage() {
           </section>
         </div>
       </div>
-      <p className="txs">Rack · Testnet preview · No real funds</p>
+      <p className="txs">
+        Rack · Testnet preview · No real funds ·{" "}
+        <a className="link" href={REPO_URL} target="_blank" rel="noreferrer">
+          Open source on GitHub
+        </a>
+      </p>
     </>
   );
 }

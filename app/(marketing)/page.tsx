@@ -8,6 +8,7 @@ import { TestnetBanner } from "@/components/TestnetBanner";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Wordmark } from "@/components/Wordmark";
 import { useWallet } from "@/components/providers/wallet";
+import { ISSUES_URL, REPO_URL } from "@/lib/links";
 
 const benefits: { icon: IconName; tile: string; title: string; body: string }[] = [
   {
@@ -55,6 +56,16 @@ export default function LandingPage() {
         <span className="flex items-center gap-4">
           <a className="link hidden min-h-11 items-center lg:inline-flex" style={{ fontSize: 15 }} href={WALLET_GUIDE} target="_blank" rel="noreferrer">
             What’s a wallet?
+          </a>
+          <a
+            className="hidden min-h-11 items-center gap-2 text-ink-2 no-underline hover:text-ink lg:inline-flex"
+            style={{ font: "600 15px/1 var(--body)" }}
+            href={REPO_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon name="code" size={18} />
+            GitHub
           </a>
           <ThemeToggle />
         </span>
@@ -127,6 +138,19 @@ export default function LandingPage() {
           <Icon name="shield" size={16} className="mt-px text-success" />
           <span>Rack never holds your funds. You approve every payment in your wallet.</span>
         </div>
+
+        <footer className="txs flex flex-wrap items-center justify-center gap-x-4 gap-y-1 border-t border-line pt-4 lg:justify-between lg:pt-6">
+          <span>Rack · Testnet preview on Stacks · No real funds</span>
+          <span className="flex items-center gap-4">
+            <a className="link inline-flex min-h-11 items-center gap-1.5" href={REPO_URL} target="_blank" rel="noreferrer">
+              <Icon name="code" size={16} />
+              Source on GitHub
+            </a>
+            <a className="link inline-flex min-h-11 items-center" href={ISSUES_URL} target="_blank" rel="noreferrer">
+              Report a problem
+            </a>
+          </span>
+        </footer>
       </main>
 
       {/* Mobile sticky connect bar */}
