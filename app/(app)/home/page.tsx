@@ -49,7 +49,7 @@ export default function HomePage() {
       </div>
       <h1 className="sr-only lg:hidden">Home</h1>
 
-      <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_332px] lg:gap-6">
+      <div className="grid items-start gap-5 lg:gap-6 xl:grid-cols-[minmax(0,1fr)_332px]">
         <div className="flex min-w-0 flex-col gap-5 lg:gap-6">
           <SavingsHero />
 
@@ -114,7 +114,8 @@ export default function HomePage() {
           </section>
         </div>
 
-        <div className="flex flex-col gap-5">
+        {/* Side column: stacked on phones, two across on small laptops, a sidebar from xl. */}
+        <div className="grid items-start gap-5 lg:grid-cols-2 xl:grid-cols-1">
           {inProgress?.kind === "deposit" && (
             <div className="hidden lg:block">
               <DepositProgressCard sats={inProgress.deposit.amountSats} status={inProgress.deposit.status} id={inProgress.deposit.id} />
